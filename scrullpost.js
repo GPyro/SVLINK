@@ -1,68 +1,77 @@
-// JavaScript Document
-function RecentPostsScrollerv2(json) {
-	var sHeadLines;
-	var sPostURL;
-	var objPost;
-	var sMoqueeHTMLStart;
-	var sMoqueeHTMLEnd;
-	var sPoweredBy;
-	var sHeadlineTerminator;
-	var sPostLinkLocation;
+/*
+ *	Advenced Recent Posts Scroller Version 3 For Blogger
+ *	Widget By krazzy.net
+ *	Url: http://facebookjocks.blogspot.in/
+ *	Copyright © 2012, by shivam srivastava (krazzy.net)
+ */
 
+function w2bAdvRecentPostsScrollerv3(json) {
+	var w2brecentposts;
+	var w2bpostlink;
+	var w2bobj;
+	var w2bmarqueehtml;
+	var w2bmarqueehtml2;
+	var byWay2blogging;
+	var w2blinkgap;
+	var w2bposttargetlink;
+	var w2bBullet;
 	try {
-		sMoqueeHTMLStart = "\<MARQUEE behavior=\"scroll\" onmouseover=\"this.stop();\" onmouseout=\"this.start();\" ";
+		w2bmarqueehtml = "\<marquee behavior=\"scroll\" onmouseover=\"this.stop();\" onmouseout=\"this.start();\" ";
 
-		if (nWidth) {
-			sMoqueeHTMLStart = sMoqueeHTMLStart + " width = \"" + nWidth + "%\"";
+		if (w2bScrollAmount) {
+			w2bmarqueehtml = w2bmarqueehtml + " scrollamount = \"" + w2bScrollAmount + "%\"";
+		} 
+		if (w2bWidth) {
+			w2bmarqueehtml = w2bmarqueehtml + " width = \"" + w2bWidth + "%\"";
 		} else {
-			sMoqueeHTMLStart = sMoqueeHTMLStart + " width = \"100%\"";
+			w2bmarqueehtml = w2bmarqueehtml + " width = \"100%\"";
 		}
-		if (nScrollDelay) {
-			sMoqueeHTMLStart = sMoqueeHTMLStart + " scrolldelay = \"" + nScrollDelay + "\"";
+		if (w2bScrollDelay) {
+			w2bmarqueehtml = w2bmarqueehtml + " scrolldelay = \"" + w2bScrollDelay + "\"";
 		}
-		if (sDirection) {
-			sMoqueeHTMLStart = sMoqueeHTMLStart + " direction = \"" + sDirection + "\"\>";
-
-			if (sDirection == "left" || sDirection == "right") {
-				sHeadlineTerminator = "&nbsp;&nbsp;";
+		if (w2bDirection) {
+			w2bmarqueehtml = w2bmarqueehtml + " direction = \"" + w2bDirection + "\"\>";
+			if (w2bDirection == "left" || w2bDirection == "right") {
+				w2blinkgap = "&nbsp;&nbsp;&nbsp;";
 			} else {
-				sHeadlineTerminator = "\<br/\>";
+				w2blinkgap = "\<br/\>";
 			}
 		}
-		if (sOpenLinkLocation == "N") {
-			sPostLinkLocation = " target= \"_blank\" ";
+		if (w2btargetlink == "yes") {
+			w2bposttargetlink = " target= \"_blank\" ";
 		} else {
-			sPostLinkLocation = " ";
+			w2bposttargetlink = " ";
 		}
-		sMoqueeHTMLEnd = "\</MARQUEE\>"
-
-		sHeadLines = "";
-
-		for (var nFeedCounter = 0; nFeedCounter < nMaxPosts; nFeedCounter++) {
-			var objPost = json.feed.entry[nFeedCounter];
-
-			if (nFeedCounter == json.feed.entry.length) break;
-
-			for (var nCounter = 0; nCounter < objPost.link.length; nCounter++) {
-				if (objPost.link[nCounter].rel == 'alternate') {
-					sPostURL = objPost.link[nCounter].href;
+		if (w2bimagebullet == "yes") {
+			w2bBullet = " \<img class=\"w2bbulletbimg\" src=\"" + w2bimgurl + "\" />";
+		} else {
+			w2bBullet = w2bBulletchar;
+		}
+		w2bmarqueehtml2 = "\</marquee\>"
+		w2brecentposts = "";
+		for (var w2brp = 0; w2brp < w2bnumPosts; w2brp++) {
+			var w2bobj = json.feed.entry[w2brp];
+			if (w2brp == json.feed.entry.length) break;
+			for (var w2bcc = 0; w2bcc < w2bobj.link.length; w2bcc++) {
+				if (w2bobj.link[w2bcc].rel == 'alternate') {
+					w2bpostlink = w2bobj.link[w2bcc].href;
 					break;
 				}
 			}
-			sHeadLines = sHeadLines + "\<b\>" + sBulletChar + "\</b\> \<a " + sPostLinkLocation + " href=\"" + sPostURL + "\">" + objPost.title.$t + "\</a\>" + sHeadlineTerminator;
+			w2brecentposts = w2brecentposts + w2bBullet + " \<a " + w2bposttargetlink + " href=\"" + w2bpostlink + "\">" + w2bobj.title.$t + "\</a\>" + w2blinkgap;
 		}
-		sPoweredBy = "<a tareget =\"_blank\" href=\"https://codingboom.blogspot.com\"\>Get This Widget\</a\> ~ \<a tareget =\"_blank\" href=\"https://codingboom.blogspot.com\"\>Blogerku\</a\>";
-
-		if (sDirection == "left") {
-			sHeadLines = sHeadLines + "&nbsp;&nbsp;" + sPoweredBy;
-		} else if (sDirection == "right") {
-			sHeadLines = sPoweredBy + "&nbsp;&nbsp;" + sHeadLines;
-		} else if (sDirection == "up") {
-			sHeadLines = sHeadLines + "\<br/\>" + sPoweredBy;
+		byWay2blogging = "\<a tareget =\"_blank\" href=\"http://codingboom.blogspot.in\"\>+  Grab this Widget\</a\> on \<a tareget =\"_blank\" href=\"http://codingboom.blogspot.in/\"\>CodingBoom\</a\>";
+		if (w2bDirection == "left") {
+			w2brecentposts = w2brecentposts + "&nbsp;&nbsp;&nbsp;" + byWay2blogging;
+		} else if (w2bDirection == "right") {
+			w2brecentposts = byWay2blogging + "&nbsp;&nbsp;&nbsp;" + w2brecentposts;
+		} else if (w2bDirection == "up") {
+			w2brecentposts = w2brecentposts + "\<br/\>" + byWay2blogging;
 		} else {
-			sHeadLines = sPoweredBy + "\<br/\>" + sHeadLines;
+			w2brecentposts = byWay2blogging + "\<br/\>" + w2brecentposts;
 		}
-		document.write(sMoqueeHTMLStart + sHeadLines + sMoqueeHTMLEnd)
+		document.write("\<style style=\"text/css\"\>.way2blogging-srp{font-size:" + w2bfontsize + "px;background:#" + w2bbgcolor + ";font-weight:bold;}.way2blogging-srp a{color:#" + w2blinkcolor + ";text-decoration:none;}.way2blogging-srp a:hover{color:#" + w2blinkhovercolor + ";}img.w2bbulletbimg{vertical-align:middle;border:none;}\</style\>")
+		document.write("\<div class=\"way2blogging-srp\"\>" + w2bmarqueehtml + w2brecentposts + w2bmarqueehtml2 + "\</div\>")
 	} catch (exception) {
 		alert(exception);
 	}
