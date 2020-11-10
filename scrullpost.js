@@ -24,7 +24,7 @@ function w2bAdvRecentPostsScrollerv3(json) {
 		if (w2bWidth) {
 			w2bmarqueehtml = w2bmarqueehtml + " width = \"" + w2bWidth + "%\"";
 		} else {
-			w2bmarqueehtml = w2bmarqueehtml + " width = \"100%\"";
+			w2bmarqueehtml = w2bmarqueehtml + " width = \"90%\"";
 		}
 		if (w2bScrollDelay) {
 			w2bmarqueehtml = w2bmarqueehtml + " scrolldelay = \"" + w2bScrollDelay + "\"";
