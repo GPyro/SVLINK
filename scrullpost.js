@@ -24,7 +24,7 @@ function w2bAdvRecentPostsScrollerv3(json) {
 		if (w2bWidth) {
 			w2bmarqueehtml = w2bmarqueehtml + " width = \"" + w2bWidth + "%\"";
 		} else {
-			w2bmarqueehtml = w2bmarqueehtml + " width = \"90%\"";
+			w2bmarqueehtml = w2bmarqueehtml + " width = \"85%\"";
 		}
 		if (w2bScrollDelay) {
 			w2bmarqueehtml = w2bmarqueehtml + " scrolldelay = \"" + w2bScrollDelay + "\"";
@@ -34,7 +34,7 @@ function w2bAdvRecentPostsScrollerv3(json) {
 			if (w2bDirection == "left" || w2bDirection == "right") {
 				w2blinkgap = "&nbsp;&nbsp;&nbsp;";
 			} else {
-				w2blinkgap = "\<br/\>";
+				w2blinkgap = "";
 			}
 		}
 		if (w2btargetlink == "yes") {
@@ -60,7 +60,7 @@ function w2bAdvRecentPostsScrollerv3(json) {
 			}
 			w2brecentposts = w2brecentposts + w2bBullet + " \<a " + w2bposttargetlink + " href=\"" + w2bpostlink + "\">" + w2bobj.title.$t + "\</a\>" + w2blinkgap;
 		}
-		byWay2blogging = "\<a tareget =\"_blank\" href=\"http://codingboom.blogspot.in\"\>+  Grab this Widget\</a\> on \<a tareget =\"_blank\" href=\"http://codingboom.blogspot.in/\"\>CodingBoom\</a\>";
+		byWay2blogging = "\<a tareget =\"_blank\" href=\"http://codingboom.blogspot.com\"\>+  Grab this Widget\</a\> on \<a tareget =\"_blank\" href=\"http://codingboom.blogspot.com/\"\>CodingBoom\</a\>";
 		if (w2bDirection == "left") {
 			w2brecentposts = w2brecentposts + "&nbsp;&nbsp;&nbsp;" + byWay2blogging;
 		} else if (w2bDirection == "right") {
