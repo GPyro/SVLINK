@@ -34,7 +34,7 @@ function w2bAdvRecentPostsScrollerv3(json) {
 			if (w2bDirection == "left" || w2bDirection == "right") {
 				w2blinkgap = "&nbsp;&nbsp;&nbsp;";
 			} else {
-				w2blinkgap = "";
+				w2blinkgap = "\<br/\>";
 			}
 		}
 		if (w2btargetlink == "yes") {
